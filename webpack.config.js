@@ -1,3 +1,5 @@
+const CompressionPlugin = require("compression-webpack-plugin");
+
 module.exports = {
   entry: {
     "dist/main": "./src/index.js"
@@ -18,5 +20,12 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  plugins: [
+    new CompressionPlugin({
+      test: /\.(js|css)$/,
+      algorithm: "gzip",
+      compressionOptions: { level: 9 }
+    })
+  ]
 };
