@@ -40,7 +40,7 @@ I need an isolated project to build a test case
 
 1. Cloned a small dummy React project with very basic webpack config in place.
 2. Explored suggestions for compression from [Google](https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching) with an aim to enabling long term caching.
-3. Implement gzip compression algorithm. Results:
+3. Implement gzip compression algorithm via `compression-webpack-plugin`. Results:
 
 - dist/main.js 123 KiB
 - dist/main.js.gz 39.1 KiB
@@ -53,6 +53,19 @@ I need an isolated project to build a test case
 - 14% smaller than gzip for JavaScript
 - 21% smaller than gzip for HTML
 - 17% smaller than gzip for CSS
+
+2. Implement brotli compression via `brotli-webpack-plugin`.
+
+##### Iteration 3
+
+1. Bump node verion to >=11.7.0
+2. Use native support for brotli by implementing instance of `compression-webpack-plugin` with brotli compression algorithm. Results:
+
+- dist/main.js 123 KiB
+- dist/main.js.br 34.3 KiB
+- dist/main.js.gz 39.1 KiB
+
+Difference between the brotli emmitted file and the gzip is not dramatic. But it is 13.99% smaller than the gzip compressed version of the same asset as the webpack gzip plugin emitted.
 
 ##### Conclusions
 
