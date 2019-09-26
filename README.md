@@ -40,7 +40,15 @@ I need an isolated project to build a test case
 
 1. Cloned a small dummy React project with very basic webpack config in place.
 2. Explored suggestions for compression from [Google](https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching) with an aim to enabling long term caching.
-3. Why Brotli? It is:
+3. Implement gzip compression algorithm. Results:
+
+- dist/main.js 123 KiB
+- dist/main.js.gz 39.1 KiB
+- 214% decrease in over all `.js` file size follinging gzip for Javascript.
+
+##### Iteration 2
+
+1. Alternative compression algorithmWhy Brotli? Based on stats listed by [Google](). It is:
 
 - 14% smaller than gzip for JavaScript
 - 21% smaller than gzip for HTML
