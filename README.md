@@ -54,18 +54,18 @@ I need an isolated project to build a test case
 - 21% smaller than gzip for HTML
 - 17% smaller than gzip for CSS
 
-2. Implement brotli compression via `brotli-webpack-plugin`.
-
-##### Iteration 3
-
-1. Bump node verion to >=11.7.0
-2. Use native support for brotli by implementing instance of `compression-webpack-plugin` with brotli compression algorithm. Results:
+2. Implement brotli compression via `brotli-webpack-plugin`. Results:
 
 - dist/main.js 123 KiB
 - dist/main.js.br 34.3 KiB
 - dist/main.js.gz 39.1 KiB
 
 Difference between the brotli emmitted file and the gzip is not dramatic. But it is 13.99% smaller than the gzip compressed version of the same asset as the webpack gzip plugin emitted.
+
+##### Iteration 3
+
+1. Bump node verion to >=11.7.0
+2. Use native support for brotli by implementing instance of `compression-webpack-plugin` with brotli compression algorithm.
 
 ##### Conclusions
 
