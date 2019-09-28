@@ -1,5 +1,4 @@
 const CompressionPlugin = require("compression-webpack-plugin");
-const BrotliPlugin = require("brotli-webpack-plugin");
 
 module.exports = {
   entry: {
@@ -24,13 +23,16 @@ module.exports = {
   },
   plugins: [
     new CompressionPlugin({
+      filename: "[path].gz[query]",
       test: /\.(js|css)$/,
       algorithm: "gzip",
       compressionOptions: { level: 9 }
     }),
-    new BrotliPlugin({
+    new CompressionPlugin({
+      filename: "[path].br[query]",
       test: /\.(js|css)$/,
-      quality: 11
+      algorithm: "brotliCompress",
+      compressionOptions: { level: 11 }
     })
   ]
 };
