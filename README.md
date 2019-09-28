@@ -87,6 +87,13 @@ _NOTE:_ You need to include the `filename` property in the `compression-webpack-
 
 2. How do you programatically change the `.gz` and `.br` files to have `Content-Type: application/javascript`? Is this needed? [Yes](https://stackoverflow.com/questions/23600229/what-content-type-header-to-use-when-serving-gzipped-files).
 
+#### Post Compression / Usecase:
+
+To serve the statically compressed assets, they need to be uploaded to an AWS S3 bucket and have the `Content-Type` property correctly set to represent the decompressed state of the file. Considerations:
+
+- AWS provide an SDK as well as a CLI.
+- Would you want the upload process to run in all environments?
+
 #### References:
 
 - https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching
