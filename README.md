@@ -74,9 +74,18 @@ Difference between the brotli emmitted file and the gzip is not dramatic. But it
 _NOTE:_ You need to include the `filename` property in the `compression-webpack-plugin` options object when using `algorithm: 'brotliCompress'`. This isn't needed for `gzip` but without it the `.br` file is not emitted.
 
 ##### Conclusions
-1. File size of the compressed output is the same when using the separate brotli plugin vs native support for brotli. If using node >=11.7.0 the latter is preferable as it's is one less development dependency to support. 
+
+1. File size of the compressed output is the same when using the separate brotli plugin vs native support for brotli. If using node >=11.7.0 the latter is preferable as it's is one less development dependency to support.
 
 ##### Questions
+
+1. What metadata is attached to the compressed assets? To send a file to the browswer it needs to know what the `Content-Type` property is. To try to answer this and mirror the deploy system at work I manually added these emitted `/dist` files to an S3 bucket and reviewed the metadata:
+
+- `main.js` => `Content-Type: application/javascript`
+- `main.js.gz` => `Content-Type: application/x-gzip`
+- `main.js.br` => `Content-Type: binary/octet-stream`
+
+2. How do you programatically change the `.gz` and `.br` files to have `Content-Type: application/javascript`? Is this needed? [Yes](https://stackoverflow.com/questions/23600229/what-content-type-header-to-use-when-serving-gzipped-files).
 
 #### References:
 
