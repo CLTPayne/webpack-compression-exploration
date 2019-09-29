@@ -97,11 +97,17 @@ _NOTE:_ You need to include the `filename` property in the `compression-webpack-
 
 To serve the statically compressed assets, they need to be uploaded to an AWS S3 bucket and have the `Content-Type` property correctly set to represent the decompressed state of the file. Considerations:
 
-- AWS provide an SDK as well as a CLI.
 - Would you want the upload process to run in all environments?
+- AWS provide an SDK as well as a CLI.
+- Should this be a Bash script or a JavaScript process? What are the pros and cons of each? Intention is for it to run in Circle Ci.
+- What is the correct `Content-Type` for a source map? [Seems to not matter for the dev tools](https://stackoverflow.com/questions/19911929/what-mime-type-should-i-use-for-javascript-source-map-files)
+- Is a default of `Content-Type: application/octet-stream` safe? Are there edge cases that this causes problems for.
+- Do you need to handle the `Content-Type` and `Content-Encoding` properties seperately (e.g the former at upload and the latter at the CDN when sending the response to the client)? An AWS S3 object can hold both properties: ![AWS S3 Object Properties](./readme_images/AWS_S3_Object_MetaData_Header_Options.png)
 
 #### References:
 
 - https://developers.google.com/web/fundamentals/performance/webpack/use-long-term-caching
 - https://web.dev/codelab-text-compression-brotli
 - https://web.dev/codelab-text-compression
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Encoding
+- https://devhints.io/bash
