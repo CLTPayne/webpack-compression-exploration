@@ -76,6 +76,12 @@ _NOTE:_ You need to include the `filename` property in the `compression-webpack-
 ##### Conclusions
 
 1. File size of the compressed output is the same when using the separate brotli plugin vs native support for brotli. If using node >=11.7.0 the latter is preferable as it's is one less development dependency to support.
+2. With "on the fly" compression at the server or CDN level you need to carefully consider which compression algorithm and how high to set the compression level for each asset type because high compression rates (especially with Brotli) takes time and results in latency. The end user thus waits longer for the assets to be delivered to the browser. This is still an issue for dynamically generated content (e.g. news stories)
+3. Static compression of assets at build lengthens the overall build time but removes the above debate. For static content this seems like a natural choice.
+4. When you handle the compression your self (rather than a server libarary or CDN configuration performing "on the fly" compression) you need to be sure to correctly set the `Content-Encoding` and `Content-Type` headers for the receiving client to correctly process the file.
+   ```
+   "When present, the Content-Encoding value indicates which encodings were applied to the entity-body. It lets the client know how to decode in order to obtain the media-type referenced by the Content-Type header."
+   ```
 
 ##### Questions
 
