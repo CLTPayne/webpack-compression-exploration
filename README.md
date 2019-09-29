@@ -80,7 +80,9 @@ _NOTE:_ You need to include the `filename` property in the `compression-webpack-
 3. Static compression of assets at build lengthens the overall build time but removes the above debate. For static content this seems like a natural choice.
 4. When you handle the compression your self (rather than a server libarary or CDN configuration performing "on the fly" compression) you need to be sure to correctly set the `Content-Encoding` and `Content-Type` headers for the receiving client to correctly process the file.
    ```
-   "When present, the Content-Encoding value indicates which encodings were applied to the entity-body. It lets the client know how to decode in order to obtain the media-type referenced by the Content-Type header."
+   "When present, the Content-Encoding value indicates which encodings were applied to the entity-body.
+   It lets the client know how to decode in order to obtain the media-type referenced by the
+   Content-Type header."
    ```
 
 ##### Questions
