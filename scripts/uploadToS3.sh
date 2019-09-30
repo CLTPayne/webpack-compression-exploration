@@ -41,7 +41,6 @@ then
     cd "$DIRECTORY"
     files=(*)
     echo "${#files[@]} files in the $DIRECTORY to be processed" # will echo number of files in array
-    delim=", "
     echo -e "Files to be processed are: \033[31m${files[@]}\x1b[36m" # will list all files of the array
     for file in "${files[@]}"; do  
         get_content_type "$file"
