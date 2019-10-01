@@ -8,10 +8,10 @@ set -eu -o pipefail
 
 # Calculate original Content-Type
 get_content_type() {
-    file=$1
-    file_extension=${file##*.}
+    local file=$1
+    local file_extension=${file##*.}
     echo "Current extension of $file => .$file_extension"
-    declare extension
+    local extension
     if [[ "$file_extension" == "br" || "$file_extension" == "gz" ]]
     then 
         original_filename=${file%.*}
@@ -24,7 +24,7 @@ get_content_type() {
     fi
     # TODO: Default Content-Type in S3 - should this be applied?
     # or does that over ride the correct value for source maps etc
-    declare content_type
+    local content_type
     if [[ "$extension" == "html" ]]; then content_type="text/html; charset=utf-8"; fi
     if [[ "$extension" == "css" ]]; then content_type="text/css; charset=utf-8"; fi
     if [[ "$extension" == "js" ]]; then content_type="application/javascript"; fi
