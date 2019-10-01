@@ -6,6 +6,9 @@
 # Set error handling
 set -eu -o pipefail
 
+# Set build directory
+DIRECTORY="./dist"
+
 # Calculate original Content-Type
 get_content_type() {
     local file=$1
@@ -30,9 +33,6 @@ get_content_type() {
     if [[ "$extension" == "js" ]]; then content_type="application/javascript"; fi
     echo -e "\033[31mContent-Type of $file => "$content_type"\x1b[36m"
 }
-
-# Set build directory
-DIRECTORY="./dist"
 
 # Check to see if directory exists and list contents
 if [ -d "$DIRECTORY" ]
