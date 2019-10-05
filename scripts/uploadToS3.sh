@@ -8,7 +8,7 @@ set -eu -o pipefail
 
 
 # Set build directory
-DIRECTORY="./dist"
+DIRECTORY=$1
 
 # Calculate original Content-Type
 get_content_type() {
