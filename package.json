@@ -16,7 +16,7 @@
   "license": "ISC",
   "dependencies": {
     "@babel/polyfill": "^7.4.3",
-    "lodash": "^4.17.14",
+    "lodash": "^4.17.19",
     "lodash-es": "^4.17.14",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
